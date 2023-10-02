@@ -1,21 +1,23 @@
 import argentBank from "../Assets/argentBankLogo.png"
+import { Link } from "react-router-dom"
+
 export default function Nav(){
 
     return(
-        <nav class="main-nav">
-        <a class="main-nav-logo" href="./index.html">
+        <nav className="main-nav">
+        <a className="main-nav-logo" href="./index.html">
           <img
-            class="main-nav-logo-image"
+            className="main-nav-logo-image"
             src= {argentBank}
             alt="Argent Bank Logo"
           />
-          <h1 class="sr-only">Argent Bank</h1>
+          <h1 className="sr-only">Argent Bank</h1>
         </a>
         <div>
-          <a class="main-nav-item" href="./sign-in.html">
-            <i class="fa fa-user-circle"></i>
-            Sign In
-          </a>
+          <Link to="/Login" className="link"> 
+          <i className="fa fa-user-circle"></i>
+          Sign In
+          </Link>
         </div>
       </nav>
     )

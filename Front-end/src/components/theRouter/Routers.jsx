@@ -1,15 +1,17 @@
 import React from "react"
 import { Route, Routes } from 'react-router-dom'
-import Main from "../Main"
+
+import Main from "../pages/Main"
+import Login from "../pages/Login"
 
 
 function MainRoute() {  
     return (
         <Routes>
-            <Route path="/" element={<Main />} />
-            {/* <Route path="/logements/:logementId" element={<Card Data={fetchedData} />} />
-            <Route path="/Apropos" element={<Apropos />}/>
-            <Route path="*" element={<Error />} /> */}
+            <Route exact path="/" element={<Main />} />
+            <Route exact path="/Login" element={<Login />}/>
+            {/* <Route path="/logements/:logementId" element={""} />
+            <Route path="*" element={""} />  */}
         </Routes>
     )
 }
