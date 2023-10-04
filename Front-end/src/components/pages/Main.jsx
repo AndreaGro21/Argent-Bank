@@ -1,6 +1,6 @@
-import iconMoney from "../../Assets/icon-money.png"
-import iconchat from "../../Assets/icon-chat.png"
-import iconSecurity from "../../Assets/icon-security.png"
+import iconMoney from "../../Assets/icon-money.webp"
+import iconchat from "../../Assets/icon-chat.webp"
+import iconSecurity from "../../Assets/icon-security.webp"
 import FeatureIcon from "../FeatureIcon"
 export default function Main() {
 

@@ -1,4 +1,4 @@
-import argentBank from "../Assets/argentBankLogo.png"
+import argentBank from "../Assets/argentBankLogo.webp"
 import { Link } from "react-router-dom"
 
 export default function Nav(){
