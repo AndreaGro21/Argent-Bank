@@ -9,7 +9,7 @@ const dbConnection = require('./database/connection')
 dotEnv.config()
 
 const app = express()
-const PORT = process.env.PORT || 3001
+/* const PORT = process.env.PORT || 3001 */
 
 // Connect to the database
 dbConnection()
@@ -36,3 +36,19 @@ app.get('/', (req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`)
 })
+
+const corsOptions = {
+  origin: "http://localhost:3001", // Update with your frontend's URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Allow cookies and authentication headers to be sent
+};
+
+app.use(cors(corsOptions)); // Use the cors middleware with the specified options
+
+// ... other middleware and routes ...
+
+// Start your Express server
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
