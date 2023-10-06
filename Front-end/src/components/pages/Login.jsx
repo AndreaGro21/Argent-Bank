@@ -20,11 +20,10 @@ function Login() {
                 body: JSON.stringify({ email, password })
             })
             const data = await response.json()
-            const token = data.token
-            console.log(response)
-            console.log(data)
+            const token = data.body.token
             dispatch(setLogIn({ token }))
-            navigate("/user")           
+               return  navigate("/User")         
+        
         } catch (err) {
             console.log(err)
         }

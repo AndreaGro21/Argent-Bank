@@ -1,6 +1,6 @@
 
-
 import { createSlice } from "@reduxjs/toolkit";
+
 const profileInfoSlice = createSlice({
     name: "profile",
     initialState:
@@ -19,10 +19,13 @@ const profileInfoSlice = createSlice({
             state.userName = action.body.payload.nickName;
         },
         setEditProfile: (state, action) => {
-            state.userName = action.payload     
-        }
+            state.userName = action.payload
+        },
+        setResetProfile: () => { //se metto parametro?
+            return initialState;//ritorna errore per lo scope
+        },
     }
 })
 
-export const { setGetProfile, setEditProfile } = profileInfoSlice.actions
+export const { setGetProfile, setEditProfile, resetProfile } = profileInfoSlice.actions
 export default profileInfoSlice.reducer
