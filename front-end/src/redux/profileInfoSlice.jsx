@@ -1,4 +1,5 @@
 
+
 import { createSlice } from "@reduxjs/toolkit";
 const profileInfoSlice = createSlice({
     name: "profile",
@@ -12,22 +13,16 @@ const profileInfoSlice = createSlice({
     reducer:
     {
         setGetProfile: (state, action) => {
-            state.email = action.payload.email;
-            state.firstName = action.payload.firstName;
-            state.lastName = action.payload.lastName;
-            state.userName = action.payload.nickName;
+            state.email = action.body.payload.email;
+            state.firstName = action.body.payload.firstName;
+            state.lastName = action.body.payload.lastName;
+            state.userName = action.body.payload.nickName;
         },
         setEditProfile: (state, action) => {
-            state.userName = action.payload
+            state.userName = action.payload     
         }
     }
 })
-
-
-
-
-
-
 
 export const { setGetProfile, setEditProfile } = profileInfoSlice.actions
 export default profileInfoSlice.reducer

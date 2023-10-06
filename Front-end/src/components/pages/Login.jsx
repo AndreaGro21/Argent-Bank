@@ -22,8 +22,9 @@ function Login() {
             const data = await response.json()
             const token = data.token
             console.log(response)
+            console.log(data)
             dispatch(setLogIn({ token }))
-            navigate("/User")
+            navigate("/user")           
         } catch (err) {
             console.log(err)
         }
@@ -41,7 +42,7 @@ function Login() {
                         <input 
                         type="text" 
                         id="email" 
-                        autoComplete="text"
+                        autoComplete="email"
                         onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
@@ -51,7 +52,7 @@ function Login() {
                         <input 
                         type="password" 
                         id="password" 
-                        autoComplete="current-password"
+                        autoComplete="password"
                         onChange={(e) => setPassword(e.target.value)}
                         
                         
