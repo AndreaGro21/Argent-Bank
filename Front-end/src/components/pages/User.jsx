@@ -1,15 +1,21 @@
-import UserDetails from "../UserDetails"
-export default function User() {
 
+import {  useSelector } from "react-redux"
+import UserDetails from "../UserDetails"
+import RenameBtn from "../RenameUser"
+
+
+export default function User() {
+    /* const [nickName, setNickName] = useState("") */
+    const profile = useSelector((state) => state.profile)
+    console.log(profile)
 
     return (
         <main className="main bg-dark">
             <div className="header">
-                <h1>Welcome back<br />Tony Jarvis!</h1>
-                <button className="edit-button">Edit Name</button>
+                <h1>Welcome back<br />{profile.firstName}</h1>
+              <RenameBtn />
             </div>
             <h2 className="sr-only">Accounts</h2>
-
             <UserDetails
                 title="Checking"
                 x="x8349"

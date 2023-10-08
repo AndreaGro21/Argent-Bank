@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route exact path="/Login" element={<Login />} />
-        <Route path='/user' element={token ? <User /> : <Navigate to="/Main" />} />
+        <Route path='/user' element={token ? <User /> : <Navigate to="/" />} />
       </Routes>
       <Footer />
 

@@ -8,5 +8,4 @@ const store = configureStore({
         profile: profileInfoSlice
     },
 })
-
 export default store
