@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom"
 import { setLogIn } from "../../redux/profileTokenSlice";
 
 function Login() {
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const apiLogIn = async (e) => {
         e.preventDefault()
@@ -23,14 +22,11 @@ function Login() {
             const token = data.body.token
             dispatch(setLogIn({ token }))
             return navigate("/User")
-
         } catch (err) {
             console.log(err)
         }
     }
-  
     return (
-
         <main className="main bg-dark">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
@@ -54,8 +50,6 @@ function Login() {
                             id="password"
                             autoComplete="password"
                             onChange={(e) => setPassword(e.target.value)}
-
-
                         />
                     </div>
                     <div className="input-remember">
@@ -66,8 +60,6 @@ function Login() {
                 </form>
             </section>
         </main>
-
     )
 }
-
 export default Login

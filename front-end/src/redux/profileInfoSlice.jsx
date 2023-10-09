@@ -8,22 +8,27 @@ const profileInfoSlice = createSlice({
         email: "",
         firstName: "",
         lastName: "",
-        nickName: "",
+        userName: "",
     },
-    reducer:
+    reducers:
     {
         setGetProfile: (state, action) => {
-            state.email = action.body.payload.email;
-            state.firstName = action.body.payload.firstName;
-            state.lastName = action.body.payload.lastName;
-            state.nickName = action.body.payload.nickName;
+            state.email = action.payload.email;
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
+            state.userName = action.payload.userName;
         },
         setEditProfile: (state, action) => {
-            state.nickName = action.payload.nickName
+            state.userName = action.payload.userName
         },
-      /*   setResetProfile: () => { //se non metto parametro?
-            return initialState;//ritorna errore per lo scope
-        } */
+        setResetProfile: () => {
+            return {
+                email: "",
+                firstName: "",
+                lastName: "",
+                userName: "",
+            };
+        }
     }
 })
 

@@ -11,13 +11,14 @@ import './App.css';
 function App() {
   const token = useSelector(state => state.userToken.token)
   console.log(token)
+ 
   return (
     <div className="App">
-
       <Nav />
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route exact path="/Login" element={<Login />} />
+
         <Route path='/user' element={token ? <User /> : <Navigate to="/" />} />
       </Routes>
       <Footer />

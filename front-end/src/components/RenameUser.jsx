@@ -5,18 +5,19 @@ import { setEditProfile } from "../redux/profileInfoSlice";
 export default function RenameBtn() {
     const token = useSelector(state => state.userToken.token);
     const profile = useSelector(state => state.profile);
-    const [newUserName, setNewUserName] = useState(profile.nickName);
+    console.log(profile, "renamedeuser")
+    const [newuserName, setNewUserName] = useState(profile.userName);
     const [error, setError] = useState("");
-    const [showForm, setShowForm] = useState(false); 
+    const [showForm, setShowForm] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setNewUserName(profile.nickName);
-    }, [profile.nickName]);
+        setNewUserName(profile.userName);
+    }, [profile.userName]);
 
     const editUserName = async (e) => {
         e.preventDefault();
-        if (!newUserName) {
+        if (!newuserName) {
             setError("This field cannot be empty.");
             return;
         }
@@ -27,12 +28,12 @@ export default function RenameBtn() {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify({ nickName: newUserName })
+                body: JSON.stringify({ userName: newuserName })
             });
             if (!response) {
                 throw new error("Something went wrong");
             }
-            dispatch(setEditProfile(newUserName));
+            dispatch(setEditProfile(newuserName));
             setShowForm(false);
         } catch (err) {
             console.log(err);
@@ -44,17 +45,39 @@ export default function RenameBtn() {
             <button
                 className="sign-in-button"
                 onClick={() => setShowForm(!showForm)}>
-                {showForm ? "Close" : "Edit"}
+                {showForm ? "Cancel" : "Edit"}
             </button>
             {showForm && (
                 <form onSubmit={editUserName}>
                     <div className="input-wrapper">
-                        <label htmlFor="nickName">Username</label>
+
+                        <div className="input-wrapper">
+                            <label htmlFor="firstName">First Name</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                autoComplete="given-name"
+                                value={profile.firstName}
+                                readOnly
+                            />
+                        </div>
+                        <div className="input-wrapper">
+                            <label htmlFor="lastName">Last Name</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                autoComplete="family-name"
+                                value={profile.lastName}
+                                readOnly
+                            />
+                        </div>
+
+                        <label htmlFor="userName">Username</label>
                         <input
                             type="text"
-                            id="nickName"
-                            autoComplete="nickName"
-                            value={newUserName}
+                            id="userName"
+                            autoComplete="userName"
+                            value={newuserName}
                             onChange={(e) => setNewUserName(e.target.value)}
                         />
                         <button type="submit" className="sign-in-button">

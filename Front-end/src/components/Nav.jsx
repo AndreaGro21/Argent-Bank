@@ -8,7 +8,7 @@ import { setResetProfile } from "../redux/profileInfoSlice"
 export default function Nav() {
   const token = useSelector(state => state.userToken.token)
   const dispatch = useDispatch();
-  /* const disconect = useSelector(state => state.token) */
+ 
 
   return (
     <nav className="main-nav">
@@ -32,7 +32,7 @@ export default function Nav() {
             <br></br>
             <Link
               className="main-nav-item"
-              to={token ? "./" : "./sign-in/"}
+              to={token ? "./" : "./Login/"}
               onClick={() => {
                 if (token) {
                   dispatch(setLogOut({}))
@@ -42,6 +42,8 @@ export default function Nav() {
               <i className="fa fa-user-circle"></i>
               {token ? " Sign Out" : " Sign In"}
             </Link>
+
+
           </>
         }
       </div>
