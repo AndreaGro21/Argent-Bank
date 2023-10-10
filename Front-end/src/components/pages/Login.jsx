@@ -8,6 +8,7 @@ function Login() {
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [rememberMe, setRememberMe] = useState(false);
 
     const apiLogIn = async (e) => {
         e.preventDefault()
@@ -21,6 +22,9 @@ function Login() {
             const data = await response.json()
             const token = data.body.token
             dispatch(setLogIn({ token }))
+            if (rememberMe) {
+                localStorage.setItem("token", token);
+            }
             return navigate("/User")
         } catch (err) {
             console.log(err)
@@ -53,7 +57,12 @@ function Login() {
                         />
                     </div>
                     <div className="input-remember">
-                        <input type="checkbox" id="remember-me" />
+                        <input
+                        type="checkbox" 
+                        id="remember-me"
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                        />
                         <label htmlFor="remember-me">Remember me</label>
                     </div>
                     <button type="submit" className="sign-in-button">Sign In</button>

@@ -6,20 +6,22 @@ export default function RenameBtn() {
     const token = useSelector(state => state.userToken.token);
     const profile = useSelector(state => state.profile);
     console.log(profile, "renamedeuser")
-    const [newuserName, setNewUserName] = useState(profile.userName);
+    const [newUserName, setNewUserName] = useState((profile.userName || ""));
+    console.log(newUserName)
     const [error, setError] = useState("");
     const [showForm, setShowForm] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
         setNewUserName(profile.userName);
+        console.log(profile.userName, "useef")
     }, [profile.userName]);
 
     const editUserName = async (e) => {
         e.preventDefault();
-        if (!newuserName) {
+        if (!newUserName) {
             setError("This field cannot be empty.");
-            return;
+            return error;
         }
         try {
             const response = await fetch("http://localhost:3001/api/v1/user/profile", {
@@ -28,12 +30,12 @@ export default function RenameBtn() {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify({ userName: newuserName })
+                body: JSON.stringify({ userName: newUserName })
             });
             if (!response) {
-                throw new error("Something went wrong");
+                throw new Error("Something went wrong.");
             }
-            dispatch(setEditProfile(newuserName));
+            dispatch(setEditProfile(newUserName));
             setShowForm(false);
         } catch (err) {
             console.log(err);
@@ -50,7 +52,6 @@ export default function RenameBtn() {
             {showForm && (
                 <form onSubmit={editUserName}>
                     <div className="input-wrapper">
-
                         <div className="input-wrapper">
                             <label htmlFor="firstName">First Name</label>
                             <input
@@ -77,7 +78,7 @@ export default function RenameBtn() {
                             type="text"
                             id="userName"
                             autoComplete="userName"
-                            value={newuserName}
+                            value={newUserName}
                             onChange={(e) => setNewUserName(e.target.value)}
                         />
                         <button type="submit" className="sign-in-button">

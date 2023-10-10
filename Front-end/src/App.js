@@ -7,10 +7,13 @@ import Login from "./components/pages/Login";
 import User from "./components/pages/User";
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+
 import './App.css';
 function App() {
+
   const token = useSelector(state => state.userToken.token)
-  console.log(token)
+
+
  
   return (
     <div className="App">

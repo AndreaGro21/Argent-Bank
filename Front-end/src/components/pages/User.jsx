@@ -35,7 +35,7 @@ export default function User() {
     return (
         <main className="main bg-dark">
             <div className="header">
-                <h1>Welcome back<br />{profile.firstName}</h1>
+                <h1>Welcome back<br />{profile.firstName} {profile.lastName}</h1>
                 <RenameBtn />
             </div>
             <h2 className="sr-only">Accounts</h2>

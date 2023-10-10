@@ -7,6 +7,7 @@ import { setResetProfile } from "../redux/profileInfoSlice"
 
 export default function Nav() {
   const token = useSelector(state => state.userToken.token)
+  const profile = useSelector((state) => state.profile)
   const dispatch = useDispatch();
  
 
@@ -27,7 +28,7 @@ export default function Nav() {
           <>
             <Link to="/user" className="link">
               <i className="fa fa-user-circle"></i>
-              nomedeltipo
+              {profile.firstName} {profile.lastName}
             </Link>
             <br></br>
             <Link
@@ -39,7 +40,8 @@ export default function Nav() {
                   dispatch(setResetProfile())
                 }
               }}>
-              <i className="fa fa-user-circle"></i>
+                {token ? "" : <i className="fa fa-user-circle"></i> }
+              
               {token ? " Sign Out" : " Sign In"}
             </Link>
 
