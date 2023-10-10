@@ -17,7 +17,6 @@ export default function Main() {
       </div>
       <section className="features">
         <h2 className="sr-only">Features</h2>
-
         <FeatureIcon
           img={iconchat}
           titleHn="You are our #1 priority"

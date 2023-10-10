@@ -24,17 +24,18 @@ export default function User() {
                 })
                 const data = await response.json()
                 console.log(data, "userdata")
-                dispatch(setGetProfile( data.body))
+                dispatch(setGetProfile(data.body))
             } catch (err) {
                 console.log(err)
             }
         }
         fetchInfoUser()
-    }, [token,dispatch])//per recuoerare il token che e fouri dallo scope
+    }, [token, dispatch])//per recuoerare il token che e fouri dallo scope
 
     return (
         <main className="main bg-dark">
             <div className="header">
+                
                 <h1>Welcome back<br />{profile.firstName} {profile.lastName}</h1>
                 <RenameBtn />
             </div>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { setLogIn } from "../../redux/profileTokenSlice";
 
 function Login() {
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
@@ -58,10 +59,10 @@ function Login() {
                     </div>
                     <div className="input-remember">
                         <input
-                        type="checkbox" 
-                        id="remember-me"
-                        checked={rememberMe}
-                        onChange={(e) => setRememberMe(e.target.checked)}
+                            type="checkbox"
+                            id="remember-me"
+                            checked={rememberMe}
+                            onChange={(e) => setRememberMe(e.target.checked)}
                         />
                         <label htmlFor="remember-me">Remember me</label>
                     </div>

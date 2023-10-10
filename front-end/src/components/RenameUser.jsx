@@ -3,18 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setEditProfile } from "../redux/profileInfoSlice";
 
 export default function RenameBtn() {
+
     const token = useSelector(state => state.userToken.token);
     const profile = useSelector(state => state.profile);
-    console.log(profile, "renamedeuser")
     const [newUserName, setNewUserName] = useState((profile.userName || ""));
-    console.log(newUserName)
     const [error, setError] = useState("");
-    const [showForm, setShowForm] = useState(false);
+ /*    const [isLoading, setIsLoading] = useState(false); */
+    let [showForm, setShowForm] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
         setNewUserName(profile.userName);
-        console.log(profile.userName, "useef")
     }, [profile.userName]);
 
     const editUserName = async (e) => {
@@ -24,6 +23,7 @@ export default function RenameBtn() {
             return error;
         }
         try {
+           /*  setIsLoading(true); */
             const response = await fetch("http://localhost:3001/api/v1/user/profile", {
                 method: "PUT",
                 headers: {
@@ -36,20 +36,23 @@ export default function RenameBtn() {
                 throw new Error("Something went wrong.");
             }
             dispatch(setEditProfile(newUserName));
+            /* setIsLoading(false);  */
             setShowForm(false);
         } catch (err) {
             console.log(err);
-        }
+        }   
+
     };
 
     return (
-        <div>
+        <div className="edit-content">
             <button
                 className="sign-in-button"
-                onClick={() => setShowForm(!showForm)}>
+                onClick={() => setShowForm(!showForm)}//isLoading?
+                >
                 {showForm ? "Cancel" : "Edit"}
             </button>
-            {showForm && (
+            {showForm && ( //isLoading??
                 <form onSubmit={editUserName}>
                     <div className="input-wrapper">
                         <div className="input-wrapper">
@@ -72,7 +75,6 @@ export default function RenameBtn() {
                                 readOnly
                             />
                         </div>
-
                         <label htmlFor="userName">Username</label>
                         <input
                             type="text"
@@ -81,7 +83,11 @@ export default function RenameBtn() {
                             value={newUserName}
                             onChange={(e) => setNewUserName(e.target.value)}
                         />
-                        <button type="submit" className="sign-in-button">
+                        <button 
+                        type="submit" 
+                        className="sign-in-button"
+                    
+                        >
                             Save
                         </button>
                     </div>

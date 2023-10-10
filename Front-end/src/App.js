@@ -8,24 +8,19 @@ import User from "./components/pages/User";
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 
-import './App.css';
 function App() {
 
   const token = useSelector(state => state.userToken.token)
 
-
- 
   return (
     <div className="App">
       <Nav />
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route exact path="/Login" element={<Login />} />
-
         <Route path='/user' element={token ? <User /> : <Navigate to="/" />} />
       </Routes>
       <Footer />
-
     </div>
   );
 }
