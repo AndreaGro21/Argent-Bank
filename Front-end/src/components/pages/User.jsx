@@ -10,7 +10,6 @@ export default function User() {
 
     const token = useSelector(state => state.userToken.token)
     const profile = useSelector((state) => state.profile)
-    console.log(profile, "user")
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -23,7 +22,6 @@ export default function User() {
                     }
                 })
                 const data = await response.json()
-                console.log(data, "userdata")
                 dispatch(setGetProfile(data.body))
             } catch (err) {
                 console.log(err)

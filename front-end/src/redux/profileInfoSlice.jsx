@@ -19,8 +19,8 @@ const profileInfoSlice = createSlice({
             state.userName = action.payload.userName;
         },
         setEditProfile: (state, action) => {
-            state.userName = action.payload.userName
-            console.log(action.payload.userName, "profile")
+            state.userName = action.payload
+            
         },
         setResetProfile: () => {
             return {

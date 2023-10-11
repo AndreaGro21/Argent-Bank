@@ -32,6 +32,10 @@ export default function RenameBtn() {
                 },
                 body: JSON.stringify({ userName: newUserName })
             });
+            if(response){
+
+                dispatch(setEditProfile(newUserName));
+            }
             if (!response) {
                 throw new Error("Something went wrong.");
             }
