@@ -1,27 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import store from "./redux/store/store.jsx";
-import { useDispatch, } from "react-redux";
 import { setLogIn } from './redux/profileTokenSlice';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
 function LocalStorageSet() {
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            dispatch(setLogIn(token));
-        }
-    });
+    const token = localStorage.getItem("token");
+    if (token) {
+        store.dispatch(setLogIn({ token: token }));
+    }
 }
-
+LocalStorageSet()
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
         <BrowserRouter>
@@ -29,4 +22,3 @@ root.render(
         </BrowserRouter>
     </Provider>
 );
-export default LocalStorageSet;

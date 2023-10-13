@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 
@@ -11,7 +11,7 @@ export default function User() {
     const token = useSelector(state => state.userToken.token)
     const profile = useSelector((state) => state.profile)
     const dispatch = useDispatch()
-
+    const [showForm, setShowForm] = useState(false);
     useEffect(() => {
         const fetchInfoUser = async () => {
             try {
@@ -33,9 +33,11 @@ export default function User() {
     return (
         <main className="main bg-dark">
             <div className="header">
-                
+                {showForm ?  <h1>Edit user info</h1> :
                 <h1>Welcome back<br />{profile.firstName} {profile.lastName}</h1>
-                <RenameBtn />
+                }
+                
+                <RenameBtn showForm={showForm} setShowForm={setShowForm} />
             </div>
             <h2 className="sr-only">Accounts</h2>
             <UserDetails

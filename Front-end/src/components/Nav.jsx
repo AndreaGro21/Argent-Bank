@@ -27,7 +27,7 @@ export default function Nav() {
           <>
             <Link to="/user" className="link">
               <i className="fa fa-user-circle"></i>
-              {profile.firstName} {profile.lastName}
+              {profile.userName}
             </Link>
             <br></br>
             <Link

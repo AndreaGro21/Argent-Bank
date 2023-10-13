@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setEditProfile } from "../redux/profileInfoSlice";
 
-export default function RenameBtn() {
+export default function RenameBtn({ showForm, setShowForm }) {
 
     const token = useSelector(state => state.userToken.token);
     const profile = useSelector(state => state.profile);
     const [newUserName, setNewUserName] = useState((profile.userName || ""));
     const [error, setError] = useState("");
- /*    const [isLoading, setIsLoading] = useState(false); */
-    let [showForm, setShowForm] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -23,7 +21,6 @@ export default function RenameBtn() {
             return error;
         }
         try {
-           /*  setIsLoading(true); */
             const response = await fetch("http://localhost:3001/api/v1/user/profile", {
                 method: "PUT",
                 headers: {
@@ -32,7 +29,7 @@ export default function RenameBtn() {
                 },
                 body: JSON.stringify({ userName: newUserName })
             });
-            if(response){
+            if (response) {
 
                 dispatch(setEditProfile(newUserName));
             }
@@ -44,7 +41,7 @@ export default function RenameBtn() {
             setShowForm(false);
         } catch (err) {
             console.log(err);
-        }   
+        }
 
     };
 
@@ -52,11 +49,11 @@ export default function RenameBtn() {
         <div className="edit-content">
             <button
                 className="sign-in-button"
-                onClick={() => setShowForm(!showForm)}//isLoading?
-                >
+                onClick={() => setShowForm(!showForm)}
+            >
                 {showForm ? "Cancel" : "Edit"}
             </button>
-            {showForm && ( //isLoading??
+            {showForm && (
                 <form onSubmit={editUserName}>
                     <div className="input-wrapper">
                         <div className="input-wrapper">
@@ -87,10 +84,9 @@ export default function RenameBtn() {
                             value={newUserName}
                             onChange={(e) => setNewUserName(e.target.value)}
                         />
-                        <button 
-                        type="submit" 
-                        className="sign-in-button"
-                    
+                        <button
+                            type="submit"
+                            className="sign-in-button"
                         >
                             Save
                         </button>

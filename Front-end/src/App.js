@@ -8,9 +8,15 @@ import User from "./components/pages/User";
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 
+
+
+
 function App() {
 
-  const token = useSelector(state => state.userToken.token)
+
+
+const fetchedToken = useSelector(state => state.userToken.token)
+
 
   return (
     <div className="App">
@@ -18,7 +24,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route exact path="/Login" element={<Login />} />
-        <Route path='/user' element={token ? <User /> : <Navigate to="/" />} />
+        <Route path='/user' element={fetchedToken ? <User /> : <Navigate to="/" />} />
       </Routes>
       <Footer />
     </div>

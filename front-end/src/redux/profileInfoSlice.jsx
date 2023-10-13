@@ -20,7 +20,7 @@ const profileInfoSlice = createSlice({
         },
         setEditProfile: (state, action) => {
             state.userName = action.payload
-            
+
         },
         setResetProfile: () => {
             return {
