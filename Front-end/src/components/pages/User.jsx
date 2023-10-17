@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-
 import UserDetails from "../UserDetails"
 import RenameBtn from "../RenameUser"
 import { setGetProfile } from "../../redux/profileInfoSlice"

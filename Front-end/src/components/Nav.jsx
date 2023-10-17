@@ -37,12 +37,14 @@ export default function Nav() {
                 if (token) {
                   dispatch(setLogOut({}))
                   dispatch(setResetProfile())
+                  localStorage.removeItem("token")
                 }
               }}>
               {token ? (
                 <>
                   <i className="fa fa-sign-out"></i>
                   <span> Sign Out</span>
+
                 </>
               ) : (
                 <>
