@@ -6,7 +6,7 @@ import { setLogOut } from "../redux/profileTokenSlice";
 import { setResetProfile } from "../redux/profileInfoSlice"
 
 export default function Nav() {
-  
+
   const token = useSelector(state => state.userToken.token)
   const profile = useSelector((state) => state.profile)
   const dispatch = useDispatch();
