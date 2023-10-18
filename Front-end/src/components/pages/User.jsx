@@ -32,10 +32,10 @@ export default function User() {
     return (
         <main className="main bg-dark">
             <div className="header">
-                {showForm ? <h1>Edit user info</h1> :
-                    <h1>Welcome back<br />{profile.firstName} {profile.lastName}</h1>
+                {showForm ?  <h1>Edit user info</h1> :
+                <h1>Welcome back<br />{profile.firstName} {profile.lastName}</h1>
                 }
-
+                
                 <RenameBtn showForm={showForm} setShowForm={setShowForm} />
             </div>
             <h2 className="sr-only">Accounts</h2>
